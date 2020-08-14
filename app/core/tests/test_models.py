@@ -12,9 +12,14 @@ class ModerlTests(TestCase):
         self.assertEqual(user.email, email)
         self.assertTrue(user.check_password(password))
 
-    def test_new_user_normolize(self):
-        """ Test if user's email not case sensetive."""
-        email = 'weplAs.1@gmail.com'
-        user = get_user_model().objects.create_user(email, 'password123')
+#     def test_new_user_normolize(self):
+#         """ Test if user's email not case sensetive."""
+#         email = 'weplAs.1@gmail.com'
+#         user = get_user_model().objects.create_user(email, 'password123')
 
-        self.assertEqual(user.email, email.lower())
+#         self.assertEqual(user.email, email.lower())
+
+    def test_new_user_vild_email(self):
+        """ test user email with no user err"""
+        with self.assertRaises(ValueError):
+            get_user_model().objects.create_user(None, "password1122")

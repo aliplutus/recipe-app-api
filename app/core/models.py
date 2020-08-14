@@ -8,6 +8,8 @@ class UserManager(BaseUserManager):
         # this is in order to make our function more flexible
         # so when we add more filds we don't need to explisitly write them.
         """create and save new user"""
+      #   if not email:
+      #       raise ValueError('users must have email.')
         user = self.model(email=self.normalize_email(email), **extra_fields)
         # Q Q QQQ
         user.set_password(password)
