@@ -23,3 +23,12 @@ class ModerlTests(TestCase):
         """ test user email with no user err"""
         with self.assertRaises(ValueError):
             get_user_model().objects.create_user(None, "password1122")
+
+    def test_create_new_superUser(self):
+        """ Test create new suerUser"""
+        user = get_user_model().objects.create_superuser(
+            'weplutus.1@gmail.com',
+            'password'
+        )
+        self.assertTrue(user.is_superuser)
+        self.assertTrue(user.is_staff)
